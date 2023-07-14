@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="./STYLE.CSS">
+    <title>RESUME BUILDER</title>
+
+  </head>
+  <div>
+
+    <script src="./script.js"></script>
+
+    <!-- FORM -->
+    <div class="container" id="resume-form">
+      <h1 class="text-center my-4 display-1">Resume Builder</h1>
+      <p class="text-center lead">Free online resume maker, Build your brand-new
+        resume in as little as 5 minutes</p>
+      <!-- ROW-1  -->
+      <div class="row">
+
+        <!-- Personal Details COL-1-->
+        <div class="col-md-5">
+          <h3 class="text-center">Personal Details</h3>
+
+          <div class="form-group mt-3">
+            <label for="full-name">Name</label>
+            <input type="text" id="full-name" placeholder="Full Name"
+              required="true" class="form-control">
+          </div>
+          <div class="form-group mt-2">
+            <label for="dob">DOB</label>
+            <input type="date" id="dob" placeholder="Full Name" required="true"
+              class="form-control">
+          </div>
+          <div class="form-group mt-2">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="10 Digit phone number"
+              required="true"
+              class="form-control">
+          </div>
+          <div class="form-group mt-2"> <!--mt;margin top -->
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" placeholder="example@domain.com"
+              required="true"
+              class="form-control">
+            <div id="emailHelp" class="form-text">We'll never share your email
+              with anyone else.</div>
+
+          </div>
+          <div class="form-group mt-2">
+            <label for="address">Address</label>
+            <textarea id="address" cols="30" rows="3"
+              placeholder="Present Address" required="true"
+              class="form-control"></textarea>
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="profile-img">Profile Picture</label>
+            <!--accept=image/* = will accept only imag of any form--->
+
+            <input type="file" id="profile-img" accept="image/*"
+              class="form-control"
+              placeholder="upload profile picture"
+              onchange="previewImage(event)">
+            <!---previwe the image--> <!--dispaly-none=hide the element -->
+            <!--inline styling---->
+            <img src="#" alt="Uploaded Image" srcset style="display: none;"
+              id="image-preview"
+              class="img-thumbnail">
+          </div>
+
+          <!-- Personal Links -->
+          <h4 class="my-3">Links</h4>
+          <div class="form-group">
+            <label for="linkedin">LinkedIn
+              <i class="fa-brands fa-linkedin"></i>
+            </label>
+            <input type="text" id="linkedin" class="form-control"
+              placeholder="Enter LinkedIn URL">
+          </div>
+          <div class="form-group mt-1">
+            <label for="github">Github
+              <i class="fa-brands fa-github"></i>
+            </label>
+            <input type="text" id="github" class="form-control"
+              placeholder="Enter Github URL">
+          </div>
+          <div class="form-group">
+            <label for="instagram">Instagram
+              <i class="fa-brands fa-square-instagram"></i>
+            </label>
+            <input type="text" id="instagram" class="form-control"
+              placeholder="Enter Instagram URL">
+          </div>
+        </div>
+
+        <!---professional details-->
+        <div class="col-md-7" id="professional-details-form">
+          <h3 class="text-center">Professional Details</h3>
+          <!-- objective -->
+          <div class="form-group mt-3">
+            <label for="objective">Objective</label>
+            <textarea id="objective" placeholder="Write a short objective "
+                class="form-control"></textarea>
+        </div>
+
+
+          <!-- skill -->
+          <div id="add-skill-input-div" class="mt-2 text-start">
+            <label for="skill-input">Skills</label>
+            <div class="input-group" id="skill-input-section">
+              <input type="text" class="form-control" id="skill-input"
+                placeholder="Enter your skill">
+              <div class=" input-group-append">
+                <button class="btn btn-primary" id="skill-input-button"
+                  type="button" onclick="addSkill()">Add
+                  <i class="fa-sharp fa-regular fa-plus" style="color: #ffffff;"></i>
+                </button>
+              </div>
+            </div>
+            <div id="skills"></div>
+          </div>
+
+          <!--  work experience -->
+          <div id="experience-div" class="form-group mt-2">
+            <label for="experience">Experience</label>
+            <textarea id="experience-1" cols="30" rows="3"
+              placeholder="enter your experience(work/project)1"
+              class="form-control we-field"></textarea>
+            <!-- "justify contect" end---elements in the let corner -->
+            <div class="d-grid d-md-flex gap-2 justify-content-end"
+              id="we-btns-div">
+              <!--gap btw thw add annd del buton-->
+              <button class="btn btn-primary" id="we-add-btn"
+                onclick="addWorkExperience()">Add experience
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <button class="btn btn-danger" id="we-del-btn"
+                onclick="removeWorkExperience()">Remove<i class="fa-solid fa-trash"></i></button>
+
+            </div>
+          </div>
+
+          <!-- education -->
+          <div id="education-div" class="form-group mt-2">
+            <label for="education">Education</label>
+            <textarea id="education-1" cols="30" rows="3"
+              placeholder="enter your qualification1"
+              class="form-control ed-field"></textarea>
+            <!-- "justify contect" end---elements in the let corner -->
+            <div class="d-grid d-md-flex gap-2 justify-content-end"
+              id="ed-btns-div">
+
+              <!--gap btw thw add annd del buton-->
+              <button class="btn btn-primary" id="ed-add-btn"
+                onclick="addEducation()">Add education <i class="fa-solid fa-plus"></i></button>
+              <button class="btn btn-danger" id="ed-del-btn"
+                onclick="removeEducation()">Remove <i class="fa-solid fa-trash"></i></button>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- input button -->
+      <div class="container text-center mt-4 mb-3 submit-btn">
+        <!-- yelow;secondary;success:green -->
+        <button onclick="StartOver()" class="btn btn-outline-secondary">Reset
+          <i class="fa-solid fa-rotate-right"></i></button>
+        <button onclick="generateResume()" class="btn btn-outline-success">Generate
+          Resume
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+      </div>
+    </div>
+    <!-- resume template -->
+    <!-- Creating a border to represent resume builder -->
+    <div class="container  mt-2 border rounded" id="resume-template">
+      <div class="row  mx-3 my-3">
+        <!---- 4 of 12 grid columns -->
+        <!-- col-1 -->
+        <div class="col-md-4 background text-center ">
+          <img src="./img/blank-profile-picture.webp" alt="default-picture"
+            class="img-thumbnail text-center" id="profile-img-template">
+
+          <div class="container">
+            <h3 id="full-name-template">John Doe</h3>
+            <table class="table table-borderless">
+              <tbody>
+                <tr class="text-start">
+                  <th scope="row">DOB</th>
+                  <td id="dob-template" class="text-start">06-03-2005</td>
+                </tr>
+
+                <tr class="text-start">
+                  <th scope="row">Phone</th>
+                  <td id="phone-template" class="text-start">8523697410</td>
+                </tr>
+                <tr class="text-start">
+                  <th scope="row">Email</th>
+                  <td id="email-template" class="text-start">example123@gmail.com</td>
+                </tr>
+                <tr class="text-start">
+                  <th scope="row">Addresss</th>
+                  <td id="address-template" class="text-start">US</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          <!-- hr gives uh the horizontail line  -->
+          <hr>
+          <h5>Links</h5>
+          <div class="container">
+            <table class="tabele table-borderless">
+              <tbody>
+                <tr class="text-start">
+                  <th>LinkedIn</th>
+                  <td><a id="linkedin-template" href="#">www.LinkedIn.com</a></td>
+                </tr>
+                <tr class="text-start">
+                  <th>Github</th>
+                  <td><a id="github-template" href="#">www.Github.com</a></td>
+                </tr>
+                <tr class="text-start">
+                  <th>Instagram</th>
+                  <td><a id="instagram-template" href="#">www.instagram.com</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- col-2 8 of 12 col -->
+        <!-- professional details -->
+        <div class="col-md-8">
+          <!-- objective -->
+          <div class="card mt-2">
+            <div class="card-header theme">
+              <h5>
+                Objective
+              </h5>
+            </div>
+            <div class="card-body">
+              <p id="objective-template">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
+                fugit harum laborum delectus! Quis voluptatibus cumque omnis
+                asperiores sequi modi, quidem aliquid iusto blanditiis ab et
+                soluta provident doloremque hic, eius necessitatibus tempore
+                iste? Ex expedita vitae reiciendis odit saepe.</p>
+            </div>
+          </div>
+          <!-- skills tepalte -->
+          <div class="card mt-4">
+            <div class="card-header theme">
+              <h5>
+                Skills
+              </h5>
+            </div>
+            <div class="card-body" id="skill-template-div">
+              <span class="badge rounded-pill bg-secondary skill-pill">Java
+              </span>
+              <span class="badge rounded-pill bg-secondary skill-pill">Python
+              </span>
+            </div>
+          </div>
+          <!-- work experience  -->
+          <div class="card mt-4">
+            <div class="card-header theme">
+              <h5>Work Experience</h5>
+            </div>
+            <div class="card-body">
+              <ul id="we-template">
+                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit atque corrupti quasi earum alias sit architecto
+                  ut veniam, consequuntur ea, nam inventore odit provident
+                  repellendus magnam rerum perspiciatis aliquid delectus.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Explicabo assumenda magni excepturi temporibus itaque nostrum
+                  error minima distinctio ratione labore.</li>
+                <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Aspernatur, aut atque dolor quos dolore tempora.</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Academic qualifications -->
+          <div class="card mt-4">
+            <div class="card-header theme">
+              <h5>Academic Qualification</h5>
+            </div>
+            <div class="card-body">
+              <ul id="ed-template">
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Placeat sequi autem nulla, nesciunt reiciendis dolor numquam
+                  vero voluptatum recusandae dicta?
+                </li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Placeat sequi autem nulla, nesciunt reiciendis dolor numquam
+                  vero voluptatum recusandae dicta?
+                </li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Placeat sequi autem nulla, nesciunt reiciendis dolor numquam
+                  vero voluptatum recusandae dicta?
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="container text-center mt-4 mb-3 text-center" id="save-btn">
+      <!-- yelow;secondary;success:green -->
+      <button onclick="StartOver()"  type="button" class="btn btn-outline-secondary">StartOver
+        <i class="fa-regular fa-file"></i></button>
+      <button onclick="printResume('resume-template')" class="btn btn-outline-primary">Print
+
+        <i class="fa-solid fa-print"></i></button>
+    </div>
+ 
+  </body>
+</html>
